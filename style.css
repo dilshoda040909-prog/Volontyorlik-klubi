@@ -1,10 +1,112 @@
 body {
-  font-family: Arial;
+  margin: 0;
+  font-family: Arial, sans-serif;
   background: #f4f7f4;
-  text-align: center;
-  padding: 50px;
+  color: #1f2e1f;
 }
 
-h1 {
+/* TOP BAR */
+.topbar {
+  background: #2f5d3a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+/* MENU */
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+#menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: white;
+  flex-direction: column;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#menu a {
+  padding: 12px 20px;
+  text-decoration: none;
   color: #2f5d3a;
+  border-bottom: 1px solid #eee;
+}
+
+#menu a:hover {
+  background: #f0f7f0;
+}
+
+#menu.show {
+  display: flex;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+/* TITLE */
+.title {
+  font-size: 38px;
+  font-weight: bold;
+  text-transform: lowercase;
+}
+
+/* CURSIVE TEXT */
+.subtitle {
+  font-family: 'Dancing Script', cursive;
+  font-size: 42px;
+  color: #2f5d3a;
+  margin-top: 10px;
+}
+
+/* DESCRIPTION */
+.desc {
+  max-width: 600px;
+  margin: 20px auto;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* BUTTONS */
+.buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 18px;
+  text-decoration: none;
+  border-radius: 8px;
+  background: #2f5d3a;
+  color: white;
+}
+
+.btn.join {
+  background: #d4a017;
+  color: black;
+  border: 2px solid #a87c0f;
+}
+
+/* QUOTE */
+.quote {
+  margin-top: 25px;
+  font-style: italic;
+  color: #444;
 }
