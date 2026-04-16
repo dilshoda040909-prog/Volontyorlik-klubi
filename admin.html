@@ -1,31 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Admin Panel</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #f3f7f3;
+  text-align: center;
+  padding: 40px;
+}
+
+.box {
+  background: white;
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+input, textarea {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 15px;
+  background: #2f5d3a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.post {
+  background: white;
+  margin: 15px auto;
+  padding: 15px;
+  max-width: 500px;
+  border-left: 5px solid #2f5d3a;
+}
+</style>
 </head>
+
 <body>
 
-<h2>Admin Panel 🔐</h2>
+<h1>Admin Panel 🔐</h1>
 
-<input type="password" id="pass" placeholder="Password">
-<button onclick="login()">Login</button>
+<div class="box">
 
-<div id="panel" style="display:none;">
+  <input type="password" id="pass" placeholder="Password">
+  <button onclick="login()">Login</button>
 
-  <h3>Add Event</h3>
+  <div id="panel" style="display:none;">
+    <h3>Create Post</h3>
 
-  <input id="title" placeholder="Event title">
-  <input id="desc" placeholder="Description">
+    <input id="title" placeholder="Title">
+    <textarea id="content" placeholder="Content"></textarea>
 
-  <button onclick="addEvent()">Add</button>
-
-  <h3>Events Preview</h3>
-  <div id="events"></div>
+    <button onclick="addPost()">Post</button>
+  </div>
 
 </div>
 
+<h2>Published Posts</h2>
+<div id="posts"></div>
+
 <script>
+
 const PASSWORD = "339club";
 
 function login() {
@@ -37,28 +82,40 @@ function login() {
   }
 }
 
-function addEvent() {
+function addPost() {
   let title = document.getElementById("title").value;
-  let desc = document.getElementById("desc").value;
+  let content = document.getElementById("content").value;
 
-  let div = document.createElement("div");
-  div.innerHTML = "<h4>" + title + "</h4><p>" + desc + "</p>";
+  let post = {
+    title,
+    content
+  };
 
-  document.getElementById("events").appendChild(div);
+  let posts = JSON.parse(localStorage.getItem("posts") || "[]");
+  posts.unshift(post);
+  localStorage.setItem("posts", JSON.stringify(posts));
 
-  saveData();
+  showPosts();
 }
 
-/* SAVE DATA IN BROWSER */
-function saveData() {
-  localStorage.setItem("events", document.getElementById("events").innerHTML);
+function showPosts() {
+  let posts = JSON.parse(localStorage.getItem("posts") || "[]");
+
+  let html = "";
+  posts.forEach(p => {
+    html += `
+      <div class="post">
+        <h3>${p.title}</h3>
+        <p>${p.content}</p>
+      </div>
+    `;
+  });
+
+  document.getElementById("posts").innerHTML = html;
 }
 
-/* LOAD DATA */
-window.onload = function() {
-  document.getElementById("events").innerHTML =
-    localStorage.getItem("events") || "";
-}
+showPosts();
+
 </script>
 
 </body>
