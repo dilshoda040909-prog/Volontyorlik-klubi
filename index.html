@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>339 Volontyorlik Klubi</title>
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* BODY */
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -30,19 +31,14 @@ body {
 .logo {
   font-weight: 700;
 }
-<nav id="menu">
-  <a href="index.html">Home</a>
-  <a href="events.html">Events</a>
-  <a href="team.html">Team</a>
-  <a href="apply.html">Apply</a>
-  <a href="admin.html">Admin</a>
-</nav>
+
 /* MENU */
 .menu-icon {
   font-size: 28px;
   cursor: pointer;
 }
 
+/* NAV MENU */
 #menu {
   display: none;
   position: absolute;
@@ -74,26 +70,24 @@ body {
   gap: 40px;
 }
 
-/* LEFT */
+/* TEXT */
 .text {
   flex: 1;
 }
 
 .title {
-  font-size: 54px;
+  font-size: 56px;
   font-weight: 800;
-  color: #b8860b; /* dark gold */
-  text-transform: lowercase;
+  color: #b8860b;
 }
 
 .subtitle {
   font-family: "Dancing Script", cursive;
-  font-size: 40px;
+  font-size: 42px;
   color: #2f5d3a;
-  margin-top: 10px;
 }
 
-/* FRAME BOX */
+/* INFO BOX */
 .info-box {
   background: rgba(255,255,255,0.85);
   border-left: 6px solid #b8860b;
@@ -133,19 +127,11 @@ body {
 }
 
 /* IMAGE */
-.image-box {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
 .image-box img {
   width: 340px;
   height: 430px;
   object-fit: cover;
-  border-top-left-radius: 200px;
-  border-top-right-radius: 200px;
-  border-bottom-right-radius: 200px;
+  border-radius: 60% 60% 60% 0;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
@@ -155,26 +141,25 @@ body {
     flex-direction: column;
     text-align: center;
   }
-
-  .info-box {
-    margin: 20px auto;
-  }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- TOP -->
+<!-- TOP BAR -->
 <header class="topbar">
   <div class="logo">339 Volontyorlik 🌿</div>
+
   <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
   <nav id="menu">
-    <a href="#">Home</a>
-    <a href="#">Events</a>
-    <a href="#">Team</a>
-    <a href="#">Apply</a>
+    <a href="index.html">Home</a>
+    <a href="events.html">Events</a>
+    <a href="team.html">Team</a>
+    <a href="apply.html">Apply</a>
+    <a href="admin.html">Admin</a>
   </nav>
 </header>
 
@@ -183,11 +168,11 @@ body {
 
   <div class="text">
 
-    <div class="title">volontyorlik klub</div>
+    <div class="title fade-in">volontyorlik klub</div>
 
-    <div class="subtitle">Birgalikda o‘samiz</div>
+    <div class="subtitle fade-in">Birgalikda o‘samiz</div>
 
-    <div class="info-box">
+    <div class="info-box fade-in">
       <p>
         339-maktabning o’quvchilar tomonidan tashkil etilgan volontyorlik loyihasi.
         Biz turli ekologik va ta’lim loyihalari tashkil etamiz.
@@ -198,27 +183,25 @@ body {
       </div>
     </div>
 
-    <div class="buttons">
+    <div class="buttons fade-in">
       <a class="btn" href="#">Loyihalar</a>
       <a class="btn join" href="#">Volontyorlikka qo‘shilish</a>
     </div>
 
   </div>
 
-  <div class="image-box">
+  <div class="image-box fade-in">
     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="students in nature">
   </div>
 
 </section>
 
 <script>
+
+/* MENU TOGGLE */
 function toggleMenu() {
   document.getElementById("menu").classList.toggle("show");
 }
-</script>
-
-</body>
-</html>
 
 /* SCROLL ANIMATION */
 const elements = document.querySelectorAll(".fade-in");
@@ -232,4 +215,8 @@ const observer = new IntersectionObserver(entries => {
 });
 
 elements.forEach(el => observer.observe(el));
+
 </script>
+
+</body>
+</html>
