@@ -1,11 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="uz">
 <head>
-  <title>339 Volunteering Club</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>339 Volontyorlik Klubi</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- cursive font -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
-  <h1>Welcome to 339 Volunteering Club 🌿</h1>
-  <p>This is our first website!</p>
+
+<!-- TOP NAV -->
+<header class="topbar">
+  <div class="logo">339 Volontyorlik 🌿</div>
+
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+  <nav id="menu">
+    <a href="#">Home</a>
+    <a href="#">Events</a>
+    <a href="#">Team</a>
+    <a href="#">Apply</a>
+  </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+
+  <h1 class="title">volontyorlik klub</h1>
+
+  <h2 class="subtitle">Birgalikda o‘samiz</h2>
+
+  <p class="desc">
+    339-maktabning o’quvchilar tomonidan tashkil etilgan volontyorlik loyihasi.
+    Biz turli ekologik va ta’lim loyihalari tashkil etamiz.
+  </p>
+
+  <div class="buttons">
+    <a class="btn" href="#">Loyihalar</a>
+
+    <a class="btn join" href="#">
+      Volontyorlikka qo‘shilish
+    </a>
+  </div>
+
+  <div class="quote">
+    “Jamiyatni o‘zgartirishga tayyormisiz? Unda bizga qo‘shiling”
+  </div>
+
+</section>
+
+<script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("show");
+}
+</script>
+
 </body>
 </html>
