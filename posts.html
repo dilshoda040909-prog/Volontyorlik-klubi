@@ -2,7 +2,7 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<title>Posts - 339 Club</title>
+<title>Posts</title>
 
 <style>
 body {
@@ -18,32 +18,13 @@ header {
   text-align: center;
 }
 
-.container {
-  padding: 20px;
-  max-width: 700px;
-  margin: auto;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-}
-
-button {
-  background: #2f5d3a;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-}
-
 .post {
   background: white;
-  margin: 15px 0;
+  max-width: 600px;
+  margin: 15px auto;
   padding: 15px;
+  border-left: 5px solid #2f5d3a;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .post img {
@@ -56,61 +37,34 @@ button {
 
 <body>
 
-<header style="display:flex; justify-content:space-between; align-items:center; padding:15px; background:#2f5d3a; color:white;">
-  
+<header>
   <h2>Posts 🌿</h2>
-
-  <a href="admin-posts.html" style="color:white; text-decoration:none; font-weight:bold;">
-    Admin Login
-  </a>
-
 </header>
 
-<div class="container">
-
-  <h3>All Posts</h3>
-  <div id="posts"></div>
-
-</div>
+<div id="posts"></div>
 
 <script>
 
-function addPost() {
-  let title = document.getElementById("title").value;
-  let text = document.getElementById("text").value;
-  let file = document.getElementById("imageFile").files[0];
+function loadPosts() {
+  let posts = JSON.parse(localStorage.getItem("posts") || "[]");
 
-  let reader = new FileReader();
+  let html = "";
 
-  reader.onload = function () {
+  posts.forEach(p => {
+    html += `
+      <div class="post">
+        <h3>${p.title}</h3>
+        <p>${p.text}</p>
+        ${p.image ? `<img src="${p.image}">` : ""}
+      </div>
+    `;
+  });
 
-    let imageData = reader.result;
-
-    let posts = JSON.parse(localStorage.getItem("posts") || "[]");
-
-    posts.unshift({
-      title,
-      text,
-      image: imageData
-    });
-
-    localStorage.setItem("posts", JSON.stringify(posts));
-
-    showPosts();
-  };
-
-  if (file) {
-    reader.readAsDataURL(file);
-  } else {
-    let posts = JSON.parse(localStorage.getItem("posts") || "[]");
-
-    posts.unshift({ title, text, image: "" });
-
-    localStorage.setItem("posts", JSON.stringify(posts));
-
-    showPosts();
-  }
+  document.getElementById("posts").innerHTML = html;
 }
+
+loadPosts();
+
 </script>
 
 </body>
