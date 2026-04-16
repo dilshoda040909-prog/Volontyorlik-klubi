@@ -5,19 +5,163 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>339 Volontyorlik Klubi</title>
 
-<link rel="stylesheet" href="style.css">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- Google fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(120deg, #f3f7f3, #e7f0e7);
+  color: #1f2e1f;
+}
 
+/* TOP BAR */
+.topbar {
+  background: #2f5d3a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  position: relative;
+}
+
+.logo {
+  font-weight: 700;
+}
+
+/* MENU */
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+#menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+#menu a {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #2f5d3a;
+}
+
+#menu.show {
+  display: flex;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 70px 10%;
+  gap: 40px;
+}
+
+/* LEFT */
+.text {
+  flex: 1;
+}
+
+.title {
+  font-size: 54px;
+  font-weight: 800;
+  color: #b8860b; /* dark gold */
+  text-transform: lowercase;
+}
+
+.subtitle {
+  font-family: "Dancing Script", cursive;
+  font-size: 40px;
+  color: #2f5d3a;
+  margin-top: 10px;
+}
+
+/* FRAME BOX */
+.info-box {
+  background: rgba(255,255,255,0.85);
+  border-left: 6px solid #b8860b;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  max-width: 520px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.quote {
+  font-family: "Dancing Script", cursive;
+  font-size: 24px;
+  color: #2f5d3a;
+  margin-top: 10px;
+}
+
+/* BUTTONS */
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 18px;
+  background: #2f5d3a;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.btn.join {
+  background: #d4a017;
+  color: black;
+}
+
+/* IMAGE */
+.image-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.image-box img {
+  width: 340px;
+  height: 430px;
+  object-fit: cover;
+  border-top-left-radius: 200px;
+  border-top-right-radius: 200px;
+  border-bottom-right-radius: 200px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info-box {
+    margin: 20px auto;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<!-- TOP -->
 <header class="topbar">
   <div class="logo">339 Volontyorlik 🌿</div>
-
   <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
   <nav id="menu">
@@ -31,30 +175,32 @@
 <!-- HERO -->
 <section class="hero">
 
-  <!-- LEFT TEXT -->
   <div class="text">
-    <h1 class="title">volontyorlik klub</h1>
 
-    <h2 class="subtitle">Birgalikda o‘samiz</h2>
+    <div class="title">volontyorlik klub</div>
 
-    <p class="desc">
-      339-maktabning o’quvchilar tomonidan tashkil etilgan volontyorlik loyihasi.
-      Biz turli ekologik va ta’lim loyihalari tashkil etamiz.
-    </p>
+    <div class="subtitle">Birgalikda o‘samiz</div>
+
+    <div class="info-box">
+      <p>
+        339-maktabning o’quvchilar tomonidan tashkil etilgan volontyorlik loyihasi.
+        Biz turli ekologik va ta’lim loyihalari tashkil etamiz.
+      </p>
+
+      <div class="quote">
+        “Jamiyatni o‘zgartirishga tayyormisiz? Unda bizga qo‘shiling”
+      </div>
+    </div>
 
     <div class="buttons">
       <a class="btn" href="#">Loyihalar</a>
       <a class="btn join" href="#">Volontyorlikka qo‘shilish</a>
     </div>
 
-    <div class="quote">
-      “Jamiyatni o‘zgartirishga tayyormisiz? Unda bizga qo‘shiling”
-    </div>
   </div>
 
-  <!-- RIGHT IMAGE -->
   <div class="image-box">
-    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="students">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="students in nature">
   </div>
 
 </section>
@@ -67,10 +213,6 @@ function toggleMenu() {
 
 </body>
 </html>
-<script>
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("show");
-}
 
 /* SCROLL ANIMATION */
 const elements = document.querySelectorAll(".fade-in");
