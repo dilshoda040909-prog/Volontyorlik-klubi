@@ -100,3 +100,22 @@ button:hover {
 
 </body>
 </html>
+<script>
+document.querySelector("form").addEventListener("submit", function() {
+
+  let app = {
+    name: document.querySelector("[name='name']").value,
+    grade: document.querySelector("[name='grade']").value,
+    email: document.querySelector("[name='email']").value,
+    phone: document.querySelector("[name='phone']").value,
+    interest: document.querySelector("[name='interest']").value,
+    reason: document.querySelector("[name='reason']").value
+  };
+
+  let apps = JSON.parse(localStorage.getItem("applications") || "[]");
+  apps.unshift(app);
+
+  localStorage.setItem("applications", JSON.stringify(apps));
+
+});
+</script>
