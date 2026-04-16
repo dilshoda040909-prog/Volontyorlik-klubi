@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Admin Panel 🔐</h2>
+
+<input type="password" id="pass" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<div id="panel" style="display:none;">
+
+  <h3>Add Event</h3>
+
+  <input id="title" placeholder="Event title">
+  <input id="desc" placeholder="Description">
+
+  <button onclick="addEvent()">Add</button>
+
+  <h3>Events Preview</h3>
+  <div id="events"></div>
+
+</div>
+
+<script>
+const PASSWORD = "339club";
+
+function login() {
+  let p = document.getElementById("pass").value;
+  if (p === PASSWORD) {
+    document.getElementById("panel").style.display = "block";
+  } else {
+    alert("Wrong password");
+  }
+}
+
+function addEvent() {
+  let title = document.getElementById("title").value;
+  let desc = document.getElementById("desc").value;
+
+  let div = document.createElement("div");
+  div.innerHTML = "<h4>" + title + "</h4><p>" + desc + "</p>";
+
+  document.getElementById("events").appendChild(div);
+
+  saveData();
+}
+
+/* SAVE DATA IN BROWSER */
+function saveData() {
+  localStorage.setItem("events", document.getElementById("events").innerHTML);
+}
+
+/* LOAD DATA */
+window.onload = function() {
+  document.getElementById("events").innerHTML =
+    localStorage.getItem("events") || "";
+}
+</script>
+
+</body>
+</html>
