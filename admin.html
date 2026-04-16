@@ -1,120 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Admin Panel</title>
+<title>Admin Login</title>
 
 <style>
 body {
   font-family: Arial;
   background: #f3f7f3;
-  text-align: center;
-  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .box {
   background: white;
-  padding: 20px;
-  max-width: 400px;
-  margin: auto;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 300px;
 }
 
-input, textarea {
+input {
   width: 90%;
   padding: 10px;
   margin: 10px 0;
 }
 
 button {
-  padding: 10px 15px;
   background: #2f5d3a;
   color: white;
   border: none;
+  padding: 10px 15px;
   cursor: pointer;
   border-radius: 6px;
 }
 
-.post {
-  background: white;
-  margin: 15px auto;
-  padding: 15px;
-  max-width: 500px;
-  border-left: 5px solid #2f5d3a;
+#panel {
+  display: none;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Admin Panel 🔐</h1>
-
 <div class="box">
 
-  <input type="password" id="pass" placeholder="Password">
-  <button onclick="login()">Login</button>
+  <div id="login">
+    <h2>Admin Login 🔐</h2>
+    <input type="password" id="pass" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
 
-  <div id="panel" style="display:none;">
+  <div id="panel">
+
     <h3>Create Post</h3>
 
     <input id="title" placeholder="Title">
-    <textarea id="content" placeholder="Content"></textarea>
+    <input id="text" placeholder="Text">
 
     <button onclick="addPost()">Post</button>
+
   </div>
 
 </div>
 
-<h2>Published Posts</h2>
-<div id="posts"></div>
-
 <script>
 
-const PASSWORD = "339club";
+const PASSWORD = "339club"; // change this anytime
 
 function login() {
   let p = document.getElementById("pass").value;
+
   if (p === PASSWORD) {
+    document.getElementById("login").style.display = "none";
     document.getElementById("panel").style.display = "block";
   } else {
     alert("Wrong password");
   }
 }
 
+/* SAVE POSTS */
 function addPost() {
   let title = document.getElementById("title").value;
-  let content = document.getElementById("content").value;
-
-  let post = {
-    title,
-    content
-  };
+  let text = document.getElementById("text").value;
 
   let posts = JSON.parse(localStorage.getItem("posts") || "[]");
-  posts.unshift(post);
+
+  posts.unshift({ title, text });
+
   localStorage.setItem("posts", JSON.stringify(posts));
 
-  showPosts();
+  alert("Post added!");
 }
-
-function showPosts() {
-  let posts = JSON.parse(localStorage.getItem("posts") || "[]");
-
-  let html = "";
-  posts.forEach(p => {
-    html += `
-      <div class="post">
-        <h3>${p.title}</h3>
-        <p>${p.content}</p>
-      </div>
-    `;
-  });
-
-  document.getElementById("posts").innerHTML = html;
-}
-
-showPosts();
 
 </script>
 
